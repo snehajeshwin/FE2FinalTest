@@ -9,6 +9,8 @@
 	
 	<button id="b3" onclick="addRow()">Add Row</button>
 	
+	<div id="table-container"></div>
+
 		
 	<script language="javascript">
         function generateTable() {
@@ -27,7 +29,7 @@
                 const row = document.createElement('tr');
                 for (let j = 0; j < numCols; j++) {
                     const cell = document.createElement('td');
-                    cell.textContent = `Row ${i + 1}, Column ${j + 1}`;
+                    cell.textContent = `R${i + 1}C${j + 1}   `;
                     row.appendChild(cell);
                 }
                 table.appendChild(row);
@@ -51,7 +53,7 @@
 
             for (let i = 0; i < numRows; i++) {
                 const cell = document.createElement('td');
-                cell.textContent = `New Column ${table.rows[i].cells.length + 1}`;
+                cell.textContent = `NewC${table.rows[i].cells.length + 1}`;
                 table.rows[i].appendChild(cell);
             }
         }
@@ -64,7 +66,7 @@
 
             for (let j = 0; j < numCols; j++) {
                 const cell = newRow.insertCell();
-                cell.textContent = `New Row ${table.rows.length}, Column ${j + 1}`;
+                cell.textContent = `NewR${table.rows.length}C${j + 1}`;
             }
         }
     </script>
