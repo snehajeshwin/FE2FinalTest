@@ -13,6 +13,7 @@
 
 		
 	<script language="javascript">
+		
         function generateTable() {
             // Get the user input for rows and columns
             const numRows = parseInt(document.getElementById('t1').value);
@@ -36,14 +37,21 @@
             }
 
             // Clear existing table (if any)
-            tableContainer.innerHTML = '';
+            document.body.innerHTML = '';
 
             // Append the new table to the container
-            tableContainer.appendChild(table);
+            document.body.appendChild(table);
 
             // Show the "Add Column" and "Add Row" buttons
-            document.getElementById('b2').style.display = 'inline';
-            document.getElementById('b3').style.display = 'inline';
+            var addColButton = document.createElement('button');
+			addColButton.innerText = 'Add Column';
+			addColButton.onclick = addColumn;
+			document.body.appendChild(addColButton);
+			
+			var addRowButton = document.createElement('button');
+			addRowButton.innerText = 'Add Row';
+			addRowButton.onclick = addRow;
+			document.body.appendChild(addRowButton);
         }
 
         // Function to add a new column
@@ -53,7 +61,7 @@
 
             for (let i = 0; i < numRows; i++) {
                 const cell = document.createElement('td');
-                cell.textContent = `NewC${table.rows[i].cells.length + 1}`;
+                cell.textContent = `R${i+1}C${table.rows[i].cells.length + 1}`;
                 table.rows[i].appendChild(cell);
             }
         }
@@ -66,9 +74,11 @@
 
             for (let j = 0; j < numCols; j++) {
                 const cell = newRow.insertCell();
-                cell.textContent = `NewR${table.rows.length}C${j + 1}`;
+                cell.textContent = `R${table.rows.length}C${j + 1}`;
             }
         }
     </script>
+		
+
 	
 </html>
