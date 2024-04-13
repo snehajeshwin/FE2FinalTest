@@ -13,11 +13,21 @@
 
 		
 	<script language="javascript">
+
+		function isInteger(value) {
+					return /^\d+$/.test(value);
+				}
+
 		
         function generateTable() {
             // Get the user input for rows and columns
             const numRows = parseInt(document.getElementById('t1').value);
             const numCols = parseInt(document.getElementById('t2').value);
+
+			if (!isInteger(numRows) || !isInteger(numCols)) {
+                alert('Please enter valid integer values for rows and columns.');
+                return;
+            }
 
             // Get the table container element
             const tableContainer = document.getElementById('table-container');
