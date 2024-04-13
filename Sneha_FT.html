@@ -8,11 +8,65 @@
 	<button id="b2" onclick="addColumn()">Add Column</button>
 	
 	<button id="b3" onclick="addRow()">Add Row</button>
+	
 		
 	<script language="javascript">
-		
-		//Your code goes here
-	
-	</script>
+        function generateTable() {
+            // Get the user input for rows and columns
+            const numRows = parseInt(document.getElementById('t1').value);
+            const numCols = parseInt(document.getElementById('t2').value);
+
+            // Get the table container element
+            const tableContainer = document.getElementById('table-container');
+
+            // Create a new table element
+            const table = document.createElement('table');
+
+            // Generate rows and columns
+            for (let i = 0; i < numRows; i++) {
+                const row = document.createElement('tr');
+                for (let j = 0; j < numCols; j++) {
+                    const cell = document.createElement('td');
+                    cell.textContent = `Row ${i + 1}, Column ${j + 1}`;
+                    row.appendChild(cell);
+                }
+                table.appendChild(row);
+            }
+
+            // Clear existing table (if any)
+            tableContainer.innerHTML = '';
+
+            // Append the new table to the container
+            tableContainer.appendChild(table);
+
+            // Show the "Add Column" and "Add Row" buttons
+            document.getElementById('b2').style.display = 'inline';
+            document.getElementById('b3').style.display = 'inline';
+        }
+
+        // Function to add a new column
+        function addColumn() {
+            const table = document.querySelector('table');
+            const numRows = table.rows.length;
+
+            for (let i = 0; i < numRows; i++) {
+                const cell = document.createElement('td');
+                cell.textContent = `New Column ${table.rows[i].cells.length + 1}`;
+                table.rows[i].appendChild(cell);
+            }
+        }
+
+        // Function to add a new row
+        function addRow() {
+            const table = document.querySelector('table');
+            const newRow = table.insertRow();
+            const numCols = table.rows[0].cells.length;
+
+            for (let j = 0; j < numCols; j++) {
+                const cell = newRow.insertCell();
+                cell.textContent = `New Row ${table.rows.length}, Column ${j + 1}`;
+            }
+        }
+    </script>
 	
 </html>
