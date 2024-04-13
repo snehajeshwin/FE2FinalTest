@@ -34,6 +34,7 @@
 
             // Create a new table element
             const table = document.createElement('table');
+			table.setAttribute("border", "1");
 
             // Generate rows and columns
             for (let i = 0; i < numRows; i++) {
@@ -71,6 +72,7 @@
 
             for (let i = 0; i < numRows; i++) {
                 const cell = document.createElement('td');
+				cell.style.color= "Cyan";
                 cell.textContent = `R${i+1}C${table.rows[i].cells.length + 1}`;
                 table.rows[i].appendChild(cell);
             }
@@ -84,6 +86,8 @@
 
             for (let j = 0; j < numCols; j++) {
                 const cell = newRow.insertCell();
+				cell.style.color= "Cyan";
+
                 cell.textContent = `R${table.rows.length}C${j + 1}`;
             }
         }
